@@ -1,0 +1,18 @@
+import os
+import sys
+
+# Project 1: Word Cloud Generator
+
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+def generate_wordcloud(text_path):
+    if not os.path.exists(text_path):
+        print(f"File not found: {text_path}")
+        return
+    with open(text_path, 'r', encoding='utf-8') as f:
+        text = f.read()
+    wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis('off')
+    plt.show()
